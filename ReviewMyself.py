@@ -128,7 +128,13 @@ class TodoSearchEngine():
 							if match:
 								match_groups = match.groupdict()
 								if "priority" in match_groups:
-									priority = int(match_groups["priority"])
+									l = len(match_groups["priority"])
+									if l >= 3:
+										priority = 1
+									elif l == 2:
+										priority = 2
+									elif l == 1:
+										priority = 3
 									todo = todo.replace(match.group(0), "")
 
 							yield {
@@ -221,11 +227,17 @@ class ReviewMyselfShowResultCommand(sublime_plugin.TextCommand):
 				if minimized_filepath.startswith(path_to_search):
 					minimized_filepath = minimized_filepath.replace(path_to_search, Util.getBasenameFromPath(path_to_search))
 
+			if result["priority"] >= 3:
+				marks = "! "
+			elif result["priority"] == 2:
+				marks = "!! "
+			elif result["priority"] == 1:
+				marks = "!!! "
 			formatted_result = todo_result_pattern.format(
 				index = "{0}.".format(index),
 				filepath = minimized_filepath,
 				linenum = result['linenum'],
-				priority = "p{0}.".format(result["priority"]) if result["priority"] != 9999 else "", #TODO: unhardcode max priority #p3
+				priority = marks if result["priority"] != 9999 else "", #TODO: unhardcode max priority #p3
 				todo = result["todo"])
 
 			result_region_start = result_view.size()

@@ -3,7 +3,7 @@
 		"TODO\\s*:+\\s*(?P<todo>.*)$"
 	],
 	"priority_patterns": [
-		"#p(?P<priority>[1-3])"
+		"(?P<priority>!{1,3})"
 	],
 	"is_ignore_case": true,
 	"ignored_dir_patterns": [".svn", ".git", ".hg", "CVS"],

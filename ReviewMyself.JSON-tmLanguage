@@ -23,15 +23,15 @@
 			}
 		},
 		{
-			"match": "\\=\\>\\s*(p1\\.\\s*.+)$",
+			"match": "\\=\\>\\s*(!!!\\s*.+)$",
 			"name": "review.todo.todo.p1"
 		},
 		{
-			"match": "\\=\\>\\s*(p2\\.\\s*.+)$",
+			"match": "\\=\\>\\s*(!!\\s*.+)$",
 			"name": "review.todo.todo.p2"
 		},
 		{
-			"match": "\\=\\>\\s*(p3\\.\\s*.+)$",
+			"match": "\\=\\>\\s*(!\\s*.+)$",
 			"name": "review.todo.todo.p3"
 		},
 		{
